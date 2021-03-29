@@ -1,3 +1,5 @@
+package stockitems;
+
 import behaviours.ISell;
 
 import java.util.ArrayList;
@@ -9,11 +11,11 @@ public class Shop  {
 
     public Shop (String name) {
         this.name = name;
-        this.stock = new ArrayList<ISell>(stock);
+        this.stock = new ArrayList<ISell>();
     }
 
     public String getName() {
-        return name;
+        return this.name;
     }
 
     public int getStockCount(){
@@ -28,8 +30,12 @@ public class Shop  {
         this.stock.remove(stock);
     }
 
-    public double calculateMarkUp() {
-        return 0;
+    public int totalPotentialProfit(){
+        int total = 0;
+        for(ISell item : stock) {
+            total += item.calculateMarkUp();
+        }
+        return total;
     }
 
 
